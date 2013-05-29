@@ -10,7 +10,6 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Scanner;
 import java.util.TimeZone;
 
 /**
@@ -31,29 +30,14 @@ public class AccountOperation {
      * @param fileName
      * @throws IOException
      */
-    public void saveToFile(String fileName) throws IOException {
-        Path path = Paths.get(fileName);
+    public void saveToFile() throws IOException {
+        Path path = Paths.get(user.getId() + ".txt");
         try (BufferedWriter writer = Files.newBufferedWriter(path, ENCODING,
                         StandardOpenOption.APPEND,
                         StandardOpenOption.CREATE,
                         StandardOpenOption.WRITE)) {
             writer.write(this.toString());
             writer.newLine();
-        }
-    }
-
-    /**
-     * This method reads from a file and it does not belongs here
-     *
-     * @param fileName
-     * @throws IOException
-     * @deprecated
-     */
-    public void readFile(String fileName) throws IOException {
-        Path path = Paths.get(fileName);
-        Scanner scanner = new Scanner(path, ENCODING.name());
-        while (scanner.hasNextLine()) {
-            System.out.println(scanner.nextLine());
         }
     }
 
@@ -64,10 +48,10 @@ public class AccountOperation {
         sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
         String dateFormated = sdf.format(this.getDate());
 
-        String accountOperationString = "" + this.getUser().getId() + ", "
-                + this.getUser().getName() + ", " + this.getUser().getFirstLastName()
-                + ", " + this.getUser().getSecondLastName() + ", " + operation.toString()
-                + ", " + this.getBalance() + ", " + dateFormated;
+        String accountOperationString = "" + this.getUser().getId() + ","
+                + this.getUser().getName() + "," + this.getUser().getFirstLastName()
+                + "," + this.getUser().getSecondLastName() + "," + operation.toString()
+                + "," + this.getBalance() + "," + dateFormated;
 
         return accountOperationString;
     }

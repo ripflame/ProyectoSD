@@ -1,12 +1,12 @@
 package proyectosd.tests;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import proyectosd.controllers.AccountReader;
 import proyectosd.models.AccountOperation;
 import proyectosd.models.Operations;
 import proyectosd.models.User;
@@ -33,8 +33,14 @@ public class WriteReadTest {
         ao.setDate(calendar.getTime());
 
         try {
-            ao.saveToFile(user.getId() + ".txt");
-            ao.readFile(user.getId() + ".txt");
+            ao.saveToFile();
+            AccountReader ar = new AccountReader();
+            ArrayList<AccountOperation> al = ar.readFile("1.txt");
+            
+            for (AccountOperation aof : al) {
+                System.out.println(aof);
+            }
+            
         } catch (IOException ex) {
             Logger.getLogger(WriteReadTest.class.getName()).log(Level.SEVERE, null, ex);
         }
