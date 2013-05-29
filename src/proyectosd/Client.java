@@ -14,6 +14,10 @@ import java.util.Scanner;
 
 public class Client implements java.io.Serializable {
 
+    public Client(String ipAddress) {
+        
+    }
+    
     public static void main(String[] args) {
 
         String ipAddress = "127.0.0.1";
@@ -30,7 +34,7 @@ public class Client implements java.io.Serializable {
             outData.writeUTF("Client with address: " + client.getLocalAddress());
             
             ObjectOutputStream oos = new ObjectOutputStream(outToServer);
-            oos.writeObject(new Client());
+            
             
             InputStream inFromServer = client.getInputStream();
             DataInputStream in =

@@ -19,7 +19,7 @@ import java.util.TimeZone;
 public class AccountOperation {
 
     private User user;
-    private Operations operation;
+    private OperationType operation;
     private double balance;
     private Date date;
     private final Charset ENCODING = StandardCharsets.UTF_8;
@@ -64,11 +64,11 @@ public class AccountOperation {
         this.user = user;
     }
 
-    public Operations getOperation() {
+    public OperationType getOperation() {
         return operation;
     }
 
-    public void setOperation(Operations operation) {
+    public void setOperation(OperationType operation) {
         this.operation = operation;
     }
 

@@ -8,7 +8,7 @@ package proyectosd.models;
  *
  * @author Gilberto Leon <ripflame@gmail.com>
  */
-public enum Operations {
+public enum OperationType {
 
     DEPOSIT,
     WITHDRAW,
