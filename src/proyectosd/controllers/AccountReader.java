@@ -5,13 +5,12 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 import java.util.TimeZone;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import proyectosd.models.AccountOperation;
 import proyectosd.models.Operations;
 import proyectosd.models.User;
@@ -30,7 +29,7 @@ public class AccountReader {
      * @param fileName
      * @throws IOException
      */
-    public ArrayList<AccountOperation> readFile(String fileName) throws IOException, Exception {
+    public ArrayList<AccountOperation> readFile(String fileName) throws IOException, ParseException {
         ArrayList<AccountOperation> ao = new ArrayList();
         Path path = Paths.get(fileName);
         Scanner scanner = new Scanner(path, ENCODING.name());
@@ -41,7 +40,7 @@ public class AccountReader {
         return ao;
     }
 
-    private AccountOperation parseAccountLine(String line) throws Exception{
+    private AccountOperation parseAccountLine(String line) throws ParseException{
         String data[] = line.split(",");
 
         User user = new User();
@@ -72,8 +71,7 @@ public class AccountReader {
         String dateString = data[6];
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
         sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
-        Date date = null;
-        date = sdf.parse(dateString);
+        Date date = sdf.parse(dateString);
         ao.setDate(date);
 
         return ao;

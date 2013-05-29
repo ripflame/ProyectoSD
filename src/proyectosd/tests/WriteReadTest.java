@@ -1,6 +1,7 @@
 package proyectosd.tests;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.TimeZone;
@@ -36,18 +37,16 @@ public class WriteReadTest {
             ao.saveToFile();
             AccountReader ar = new AccountReader();
             ArrayList<AccountOperation> al = null;
-            try {
-                al = ar.readFile("1.txt");
-            } catch (Exception ex) {
-                Logger.getLogger(WriteReadTest.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
+            al = ar.readFile("1.txt");
+
             for (AccountOperation aof : al) {
-                System.out.println(aof);
+                System.out.println("AR: " + aof);
             }
-            
+
         } catch (IOException ex) {
-            Logger.getLogger(WriteReadTest.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(WriteReadTest.class.getName()).log(Level.SEVERE, "IO Exception", ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(WriteReadTest.class.getName()).log(Level.SEVERE, "Couldn't parse line", ex);
         }
     }
 }
