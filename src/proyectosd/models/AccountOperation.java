@@ -37,7 +37,8 @@ public class AccountOperation {
         try (BufferedWriter writer = Files.newBufferedWriter(path, ENCODING,
                         StandardOpenOption.APPEND,
                         StandardOpenOption.CREATE,
-                        StandardOpenOption.WRITE)) {
+                        StandardOpenOption.WRITE,
+                        StandardOpenOption.SYNC)) {
             writer.write(this.toString());
             writer.newLine();
         }

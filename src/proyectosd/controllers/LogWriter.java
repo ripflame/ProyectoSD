@@ -22,7 +22,8 @@ public class LogWriter {
         try (BufferedWriter writer = Files.newBufferedWriter(path, ENCODING,
                         StandardOpenOption.APPEND,
                         StandardOpenOption.CREATE,
-                        StandardOpenOption.WRITE)) {
+                        StandardOpenOption.WRITE,
+                        StandardOpenOption.SYNC)) {
             writer.write(logLine);
             writer.newLine();
         }
