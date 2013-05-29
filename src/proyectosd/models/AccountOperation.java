@@ -11,6 +11,7 @@ import java.nio.file.StandardOpenOption;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
+import proyectosd.controllers.LogWriter;
 
 /**
  *
@@ -31,6 +32,7 @@ public class AccountOperation {
      * @throws IOException
      */
     public void saveToFile() throws IOException {
+        LogWriter.saveLogToFile(this.toString());
         Path path = Paths.get(user.getId() + ".txt");
         try (BufferedWriter writer = Files.newBufferedWriter(path, ENCODING,
                         StandardOpenOption.APPEND,

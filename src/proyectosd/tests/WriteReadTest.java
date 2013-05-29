@@ -35,9 +35,10 @@ public class WriteReadTest {
 
         try {
             ao.saveToFile();
+            
             AccountReader ar = new AccountReader();
             ArrayList<AccountOperation> al = null;
-            al = ar.readFile("1.txt");
+            al = ar.readFile(user.getId() + ".txt");
 
             for (AccountOperation aof : al) {
                 System.out.println("AR: " + aof);
