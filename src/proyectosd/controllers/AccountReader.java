@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.Scanner;
 import java.util.TimeZone;
 import proyectosd.models.AccountOperation;
-import proyectosd.models.Operations;
+import proyectosd.models.OperationType;
 import proyectosd.models.User;
 
 /**
@@ -54,15 +54,15 @@ public class AccountReader {
 
         switch (data[4]) {
             case "DEPOSIT":
-                ao.setOperation(Operations.DEPOSIT);
+                ao.setOperation(OperationType.DEPOSIT);
                 break;
 
             case "WITHDRAW":
-                ao.setOperation(Operations.WITHDRAW);
+                ao.setOperation(OperationType.WITHDRAW);
                 break;
 
             case "CONSULT":
-                ao.setOperation(Operations.CONSULT);
+                ao.setOperation(OperationType.CONSULT);
                 break;
         }
 

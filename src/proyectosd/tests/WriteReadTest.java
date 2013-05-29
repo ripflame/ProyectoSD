@@ -9,7 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import proyectosd.controllers.AccountReader;
 import proyectosd.models.AccountOperation;
-import proyectosd.models.Operations;
+import proyectosd.models.OperationType;
 import proyectosd.models.User;
 
 /**
@@ -26,7 +26,7 @@ public class WriteReadTest {
         user.setSecondLastName("Enríquez");
         AccountOperation ao = new AccountOperation();
         ao.setUser(user);
-        ao.setOperation(Operations.DEPOSIT);
+        ao.setOperation(OperationType.DEPOSIT);
         ao.setBalance(100);
 
         TimeZone utc = TimeZone.getTimeZone("UTC");
