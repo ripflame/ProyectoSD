@@ -8,6 +8,7 @@ import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import proyectosd.controllers.AccountReader;
+import proyectosd.controllers.OperationController;
 import proyectosd.models.AccountOperation;
 import proyectosd.models.OperationType;
 import proyectosd.models.User;
@@ -26,15 +27,39 @@ public class WriteReadTest {
         user.setSecondLastName("Enríquez");
         AccountOperation ao = new AccountOperation();
         ao.setUser(user);
-        ao.setOperation(OperationType.DEPOSIT);
         ao.setBalance(100);
+        OperationController oc = new OperationController();
+
+//        try {
+//            oc.deposit(user, 80);
+//        } catch (IOException ex) {
+//            Logger.getLogger(WriteReadTest.class.getName()).log(Level.SEVERE, "IO Exception", ex);
+//        } catch (ParseException ex) {
+//            Logger.getLogger(WriteReadTest.class.getName()).log(Level.SEVERE, "Parse Exception", ex);
+//        }
+
+//        try {
+//            oc.withdraw(user, 1380);
+//        } catch (IOException ex) {
+//            Logger.getLogger(WriteReadTest.class.getName()).log(Level.SEVERE, "IO Exception", ex);
+//        } catch (ParseException ex) {
+//            Logger.getLogger(WriteReadTest.class.getName()).log(Level.SEVERE, "Parse Exception", ex);
+//        }
+
+        try {
+            oc.consult(user);
+        } catch (IOException ex) {
+            Logger.getLogger(WriteReadTest.class.getName()).log(Level.SEVERE, "IO Exception", ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(WriteReadTest.class.getName()).log(Level.SEVERE, "Parse Exception", ex);
+        }
 
         TimeZone utc = TimeZone.getTimeZone("UTC");
         Calendar calendar = Calendar.getInstance(utc);
         ao.setDate(calendar.getTime());
 
         try {
-            ao.saveToFile();
+            //ao.saveToFile();
             AccountReader ar = new AccountReader();
             ArrayList<AccountOperation> al = null;
             al = ar.readFile("1.txt");

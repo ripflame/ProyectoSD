@@ -22,6 +22,7 @@ public class Client implements java.io.Serializable {
 
         String ipAddress = "127.0.0.1";
         int port = 1234;
+        
         try {
             System.out.println("Connecting to " + ipAddress
                     + " on port " + port);
