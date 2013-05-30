@@ -1,6 +1,7 @@
 package proyectosd.tests;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -19,7 +20,7 @@ import proyectosd.models.User;
  */
 public class WriteReadTest {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws RemoteException {
         User user = new User();
         user.setId(1);
         user.setName("Gilberto");
